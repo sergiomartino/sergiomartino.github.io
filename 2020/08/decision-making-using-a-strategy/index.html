@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Sergio Martino"><link type="application/atom+xml" rel="alternate" href="https://blog.sergiomartino.com/feed.xml" title="Dailygrind" /><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Decision making using a strategy | Dailygrind</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Decision making using a strategy" />
+<meta name="author" content="Sergio Martino" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An overview on the Strategy Pattern and how it can help solving problems within an OOP or FP architecture." />
+<meta property="og:description" content="An overview on the Strategy Pattern and how it can help solving problems within an OOP or FP architecture." />
+<link rel="canonical" href="https://blog.sergiomartino.com/2020/08/decision-making-using-a-strategy/" />
+<meta property="og:url" content="https://blog.sergiomartino.com/2020/08/decision-making-using-a-strategy/" />
+<meta property="og:site_name" content="Dailygrind" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-15T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Decision making using a strategy" />
+<script type="application/ld+json">
+{"url":"https://blog.sergiomartino.com/2020/08/decision-making-using-a-strategy/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.sergiomartino.com/2020/08/decision-making-using-a-strategy/"},"author":{"@type":"Person","name":"Sergio Martino"},"headline":"Decision making using a strategy","dateModified":"2020-08-15T00:00:00-05:00","datePublished":"2020-08-15T00:00:00-05:00","description":"An overview on the Strategy Pattern and how it can help solving problems within an OOP or FP architecture.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta property="og:image" content="https://blog.sergiomartino.com/assets/me.jpg" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+  <body>
+    <div class="blog">
+        <aside>
+            <div class="logo">
+                <a href="/" title="Yup, that's me"><img src="/assets/me.jpg"></a>
+            </div>
+            <div class="me">
+                <h1>Dailygrind</h1>
+                <p>Writing code with a pencil.</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/about-me">About me</a></li>
+                    <li><a href="/about-this-blog">About this blog</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="/feed.xml">Rss</a></li>
+                </ul>
+            </nav>
+            <footer>
+                © 2021<br>
+                Author: Sergio Martino<br>
+                Engine: <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll 4.1.1</a>
+            </footer>
+        </aside>
+        <main>
+            <section>
+    
+
+<article class="article">
+    <h1>Decision making using a strategy</h1>
+    <h2>August 2020 | <a href="/2020/08/decision-making-using-a-strategy/">Permalink</a></h2>
+    <figure class="hero">
+        <img src="/post-assets/illustrations/2020/decision-making-using-a-strategy.svg">
+        <figcaption>Illustration by <a href="https://www.instagram.com/barbara_rodeghiero" target="_blank" rel="noopener">Barbara</a></figcaption>
+    </figure>
+
+    <div class="article__content">
+        <p>Developing software through code mostly means applying well estabilished design patterns. This is no different then choosing the most popular recipe to cook a beef Wellington:</p>
+
+<ul>
+  <li>You want to rely on battle-tested experience</li>
+  <li>You want to make sure the process is streamlined</li>
+  <li>You want to minimise disruption and the risk of failure</li>
+  <li>You want guaranteed results</li>
+</ul>
+
+<p>Design patterns are recipe frameworks: problems that have already been solved successfully and efficiently in the past do not require a new solution. Design patterns in fact, are the foundation on top of which all software is built.</p>
+
+<p>I will not go through the different types of software design patterns (some of which I honestly have very little knowledge of), but I would like to focus on a particular <a href="https://en.wikipedia.org/wiki/Behavioral_pattern">behavioural</a> pattern that I found myself committing to very often while developing frontend applications.</p>
+
+<h3 id="the-strategy-pattern">The Strategy Pattern</h3>
+
+<p>The Strategy Pattern can be defined as a class of implementations that can be chosen at run-time by a context class. This definition seems to refer to an object-oriented architecture however, we will see how elements of strategy patterns can be applied in a functional way as well.</p>
+
+<p>So how does it work in practice?</p>
+
+<blockquote>
+  <p>We want our customers app to have a “contact” functionality and we are expected to use their preferred contact method (email or phone for example) — <em>The Business</em></p>
+</blockquote>
+
+<p>In this scenario, you might have a customer representation that looks like this:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Customer</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">id</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">email</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">phoneNumber</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">address</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nx">contact</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">CustomerPhone</span><span class="p">.</span><span class="nx">dial</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">phoneNumber</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This approach allows the software to invoke the <strong>contact</strong> method and utilise the underlying functionality: a <strong>CustomerPhone</strong> class method to dial a number.</p>
+
+<p>How does that cater for cases where the customer prefers to be contacted by email? It does not. Nothing stops us from discriminating the functionality within the method though:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="nx">contact</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">prefersEmails</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">CustomerEmail</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">CustomerPhone</span><span class="p">.</span><span class="nx">dial</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">phoneNumber</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There’s nothing inherently wrong with this approach, however you might already guess what could go south if more functionality depends on a customer’s contact preference.</p>
+
+<blockquote>
+  <p>A customer who prefers emails will be subscribed to our monthly newsletter, otherwise we will send them a catalogue by post. — <em>The Business</em></p>
+</blockquote>
+
+<p>Let us see how this could be translated into a <strong>Customer</strong> class method:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="nx">sendMarketingMaterial</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">prefersEmails</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">CustomerNewsletter</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">CustomerCatalogue</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
+    <span class="p">}</span>  
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>It is self evident that our <strong>Customer</strong> class is being polluted from these contact preference checks and that could result in maintenance hardship down the road.</p>
+
+<p>A <em>strategy pattern</em> in this scenario will encapsulate the contact preference check into a system where this choice is made once and a whole package of behaviours is derived from it. It starts with an interface that defines which behaviours of a <strong>Customer</strong> class we intend to target:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">CustomerContactStrategy</span> <span class="p">{</span>
+    <span class="nl">contact</span><span class="p">:</span> <span class="p">(</span><span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For each behaviour we intend to implement, we define a class that must implement <strong>CustomerContactStrategy</strong>:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">CustomerPhoneContactStrategy</span> <span class="k">implements</span> <span class="nx">CustomerContactStrategy</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nx">contact</span><span class="p">(</span><span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">CustomerPhone</span><span class="p">.</span><span class="nx">dial</span><span class="p">(</span><span class="nx">customer</span><span class="p">.</span><span class="nx">phoneNumber</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">CustomerEmailContactStrategy</span> <span class="k">implements</span> <span class="nx">CustomerContactStrategy</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nx">contact</span><span class="p">(</span><span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">CustomerEmail</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">customer</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Once the strategies are defined, we need to transform our <strong>Customer</strong> class into a <em>strategy context</em> class (a class that supports a strategy):</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Customer</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">strategy</span><span class="p">:</span> <span class="nx">CustomerContactStrategy</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nx">setStrategy</span><span class="p">(</span><span class="nx">strategy</span><span class="p">:</span> <span class="nx">CustomerContactStrategy</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">strategy</span> <span class="o">=</span> <span class="nx">strategy</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">contact</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">strategy</span><span class="p">.</span><span class="nx">contact</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The <strong>Customer</strong> instance will now be able to hold a reference to a <em>behaviour</em> strategy (hence the name of behavioural pattern). By invoking the <strong>contact</strong> method, the underlying strategy will be able to complete the task in the desired way.</p>
+
+<p>Choosing the right method at run-time can be as easy as a ternary operator:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Customer</span><span class="p">();</span>
+<span class="nx">customer</span><span class="p">.</span><span class="nx">setStrategy</span><span class="p">(</span>
+    <span class="nx">customerPrefersEmails</span> <span class="p">?</span> 
+    <span class="k">new</span> <span class="nx">CustomerEmailContactStrategy</span><span class="p">()</span>
+    <span class="p">:</span>
+    <span class="k">new</span> <span class="nx">CustomerPhoneContactStrategy</span><span class="p">()</span>
+<span class="p">);</span>
+
+<span class="nx">customer</span><span class="p">.</span><span class="nx">contact</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>The decision node here lies on <strong>customerPrefersEmails</strong>, a boolean value. Upon more complex decision flows, this might be delegated to a different class altogether:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">customer</span><span class="p">.</span><span class="nx">setStrategy</span><span class="p">(</span><span class="nx">CustomerContactStrategies</span><span class="p">.</span><span class="nx">choose</span><span class="p">(</span><span class="nx">customer</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>The above code is an implementation of a <a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)">factory pattern</a> and demonstrates how adhering to a design pattern might be beneficial as the software complexity increases.</p>
+
+<h3 id="the-strategy-pattern-in-functional-programming">The Strategy pattern in functional programming</h3>
+
+<p>The strategy pattern, as designed above, can only be applied in an object oriented architecture however elements of strategy can also be applied to function composition.</p>
+
+<p>Let us review our strategies using functions:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">CustomerContactMethod</span> <span class="o">=</span> <span class="p">(</span><span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">emailCustomer</span><span class="p">:</span> <span class="nx">CustomerContactMethod</span> <span class="o">=</span> <span class="p">(</span><span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">CustomerEmail</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">customer</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">phoneCustomer</span><span class="p">:</span> <span class="nx">CustomerContactMethod</span> <span class="o">=</span> <span class="p">(</span><span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="nx">CustomerPhone</span><span class="p">.</span><span class="nx">dial</span><span class="p">(</span><span class="nx">customer</span><span class="p">.</span><span class="nx">phoneNumber</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>And compose behaviour:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">contactCustomerViaPreferredMethod</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">,</span> 
+    <span class="nx">method</span><span class="p">:</span> <span class="nx">CustomerContactMethod</span>
+<span class="p">)</span> <span class="o">=&gt;</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">method</span><span class="p">(</span><span class="nx">customer</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">contactCustomerViaEmail</span> <span class="o">=</span> <span class="nx">contactCustomerViaPreferredMethod</span><span class="p">(</span>
+    <span class="nx">customer</span><span class="p">,</span> 
+    <span class="nx">emailCustomer</span>
+<span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">contactCustomerViaPhone</span> <span class="o">=</span> <span class="nx">contactCustomerViaPreferredMethod</span><span class="p">(</span>
+    <span class="nx">customer</span><span class="p">,</span> 
+    <span class="nx">phoneCustomer</span>
+<span class="p">);</span>
+
+
+<span class="c1">// ....</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">customerPrefersEmails</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">contactCustomerViaEmail</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">contactCustomerViaPhone</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>On more complex decision flows, using a <strong>tuple</strong>:</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">sendMarketingMaterial</span><span class="p">]</span> <span class="o">=</span> <span class="nx">getCustomerInteractionMethods</span><span class="p">(</span>
+    <span class="nx">customer</span><span class="p">,</span> 
+    <span class="nx">getCustomerPreferredContactMethod</span><span class="p">(</span><span class="nx">customer</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nx">contact</span><span class="p">();</span>
+<span class="nx">sendMarketingMaterial</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="in-conclusion">In Conclusion</h3>
+
+<p>A class-based strategy pattern in frontend applications is quite unlikely these days however, mastering strategies through function composition will get you very far, especially using those frameworks which seem to have embraced a functional approach to components (ie: <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>, <a href="https://composition-api.vuejs.org/api.html">Vue Composition API</a>).</p>
+
+<h3 id="useful-resources">Useful resources</h3>
+
+<ul class="linked-list">
+  <li><a href="https://en.wikipedia.org/wiki/Strategy_pattern">https://en.wikipedia.org/wiki/Strategy_pattern</a></li>
+  <li><a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/">https://addyosmani.com/resources/essentialjsdesignpatterns/book/</a></li>
+  <li><a href="https://medium.com/javascript-scene/composing-software-an-introduction-27b72500d6ea">https://medium.com/javascript-scene/composing-software-an-introduction-27b72500d6ea</a></li>
+</ul>
+
+        <hr />
+    </div>
+</article>
+</section>
+        </main>
+    </div>
+  </body>
+</html>

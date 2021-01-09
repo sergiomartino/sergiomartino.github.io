@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Sergio Martino"><link type="application/atom+xml" rel="alternate" href="https://blog.sergiomartino.com/feed.xml" title="Dailygrind" /><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>State and reactivity in Vue | Dailygrind</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="State and reactivity in Vue" />
+<meta name="author" content="Sergio Martino" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How to manage state in simple applications, using a reactive store in Vue." />
+<meta property="og:description" content="How to manage state in simple applications, using a reactive store in Vue." />
+<link rel="canonical" href="https://blog.sergiomartino.com/2020/06/state-and-reactivity-in-vue/" />
+<meta property="og:url" content="https://blog.sergiomartino.com/2020/06/state-and-reactivity-in-vue/" />
+<meta property="og:site_name" content="Dailygrind" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-16T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="State and reactivity in Vue" />
+<script type="application/ld+json">
+{"url":"https://blog.sergiomartino.com/2020/06/state-and-reactivity-in-vue/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.sergiomartino.com/2020/06/state-and-reactivity-in-vue/"},"author":{"@type":"Person","name":"Sergio Martino"},"headline":"State and reactivity in Vue","dateModified":"2020-06-16T00:00:00-05:00","datePublished":"2020-06-16T00:00:00-05:00","description":"How to manage state in simple applications, using a reactive store in Vue.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta property="og:image" content="https://blog.sergiomartino.com/assets/me.jpg" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+  <body>
+    <div class="blog">
+        <aside>
+            <div class="logo">
+                <a href="/" title="Yup, that's me"><img src="/assets/me.jpg"></a>
+            </div>
+            <div class="me">
+                <h1>Dailygrind</h1>
+                <p>Writing code with a pencil.</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/about-me">About me</a></li>
+                    <li><a href="/about-this-blog">About this blog</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="/feed.xml">Rss</a></li>
+                </ul>
+            </nav>
+            <footer>
+                © 2021<br>
+                Author: Sergio Martino<br>
+                Engine: <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll 4.1.1</a>
+            </footer>
+        </aside>
+        <main>
+            <section>
+    
+
+<article class="article">
+    <h1>State and reactivity in Vue</h1>
+    <h2>June 2020 | <a href="/2020/06/state-and-reactivity-in-vue/">Permalink</a></h2>
+    <figure class="hero">
+        <img src="/post-assets/illustrations/2020/state-and-reactivity-in-vue.svg">
+        <figcaption>Illustration by <a href="https://www.instagram.com/barbara_rodeghiero" target="_blank" rel="noopener">Barbara</a></figcaption>
+    </figure>
+
+    <div class="article__content">
+        <p>In one of my <a href="/article/a-state-management-journey">previous articles</a>, I mentioned how it is possible to design a simple state manager in Vue by using <strong>observable</strong>. The Observable API has been available in Vue since version 2 however, with version 3 the <strong>reactive</strong> object is no longer directly modified but proxied into. Let’s have a look how both work in detail:</p>
+
+<p>In Vue 2, a reactive store might look like this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// store.js</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">Vue</span><span class="p">.</span><span class="nx">observable</span><span class="p">({</span> <span class="na">orders</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p>We can provide the components with a basic <strong>dispatch</strong> function that will collect an action with a payload and that will take care of
+updating the state. Also, we might want to provide a <strong>getters</strong> helper so that the store values can be reached as <em>computed</em> properties:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// store.js</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">dispatch</span><span class="p">(</span><span class="nx">type</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">increment-orders</span><span class="dl">'</span><span class="p">:</span>
+            <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">store</span><span class="p">,</span> <span class="p">{</span> <span class="na">orders</span><span class="p">:</span> <span class="nx">store</span><span class="p">.</span><span class="nx">orders</span> <span class="o">+</span> <span class="nx">payload</span> <span class="p">});</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="nl">default</span><span class="p">:</span>
+            <span class="c1">//</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">getters</span><span class="p">(</span><span class="nx">orders</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">orders</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">store</span><span class="p">.</span><span class="nx">orders</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In our Vue component, we register the getters and use <strong>dispatch</strong> to notify the store about a user event:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+    <span class="nx">I</span> <span class="nx">have</span>  <span class="nx">orders</span> <span class="nx">on</span> <span class="nx">my</span> <span class="nx">account</span><span class="p">.</span> 
+    <span class="o">&lt;</span><span class="nx">a</span> <span class="p">@</span><span class="nd">click</span><span class="o">=</span><span class="dl">"</span><span class="s2">increment()</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">add</span> <span class="nx">order</span><span class="o">&lt;</span><span class="sr">/a</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/template</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">store</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">return</span> <span class="p">{</span>
+    <span class="na">computed</span><span class="p">:</span> <span class="p">{</span> <span class="p">...</span><span class="nx">getters</span><span class="p">()</span> <span class="p">},</span>
+    <span class="na">methods</span><span class="p">:</span> <span class="p">{</span> 
+        <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">dispatch</span><span class="p">(</span><span class="dl">'</span><span class="s1">increment-orders</span><span class="dl">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> 
+        <span class="p">}</span> 
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<h3 id="vue-3-and-the-composition-api">Vue 3 and the Composition API</h3>
+
+<p>With the introduction of the <em>Composition API</em>, operating with reactive properties is much simpler. The above example could
+be easily refactored to follow the new constructs. Here, <strong>reactive</strong> replaced the functionality that <em>observable</em> was providing:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// store.js</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">reactive</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">reactive</span><span class="p">({</span> <span class="na">orders</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
+
+<span class="c1">// Component.vue</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">store</span><span class="p">,</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./store</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+    <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="nx">store</span> <span class="p">};</span>
+    <span class="p">},</span>
+    <span class="na">methods</span><span class="p">:{</span>
+        <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">dispatch</span><span class="p">(</span><span class="dl">'</span><span class="s1">increment-orders</span><span class="dl">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You can read more about the Vue Composition API on its <a href="https://composition-api.vuejs.org/">RFC Page</a>.</p>
+
+        <hr />
+    </div>
+</article>
+</section>
+        </main>
+    </div>
+  </body>
+</html>

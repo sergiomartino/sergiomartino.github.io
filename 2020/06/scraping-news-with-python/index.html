@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Sergio Martino"><link type="application/atom+xml" rel="alternate" href="https://blog.sergiomartino.com/feed.xml" title="Dailygrind" /><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Scraping news with Python | Dailygrind</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Scraping news with Python" />
+<meta name="author" content="Sergio Martino" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A quick tutorial that explains how to use Python&#39;s BeautifulSoup library to scrape BBC News articles." />
+<meta property="og:description" content="A quick tutorial that explains how to use Python&#39;s BeautifulSoup library to scrape BBC News articles." />
+<link rel="canonical" href="https://blog.sergiomartino.com/2020/06/scraping-news-with-python/" />
+<meta property="og:url" content="https://blog.sergiomartino.com/2020/06/scraping-news-with-python/" />
+<meta property="og:site_name" content="Dailygrind" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-16T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Scraping news with Python" />
+<script type="application/ld+json">
+{"url":"https://blog.sergiomartino.com/2020/06/scraping-news-with-python/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.sergiomartino.com/2020/06/scraping-news-with-python/"},"author":{"@type":"Person","name":"Sergio Martino"},"headline":"Scraping news with Python","dateModified":"2020-06-16T00:00:00-05:00","datePublished":"2020-06-16T00:00:00-05:00","description":"A quick tutorial that explains how to use Python&#39;s BeautifulSoup library to scrape BBC News articles.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta property="og:image" content="https://blog.sergiomartino.com/assets/me.jpg" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+  <body>
+    <div class="blog">
+        <aside>
+            <div class="logo">
+                <a href="/" title="Yup, that's me"><img src="/assets/me.jpg"></a>
+            </div>
+            <div class="me">
+                <h1>Dailygrind</h1>
+                <p>Writing code with a pencil.</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/about-me">About me</a></li>
+                    <li><a href="/about-this-blog">About this blog</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="/feed.xml">Rss</a></li>
+                </ul>
+            </nav>
+            <footer>
+                © 2021<br>
+                Author: Sergio Martino<br>
+                Engine: <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll 4.1.1</a>
+            </footer>
+        </aside>
+        <main>
+            <section>
+    
+
+<article class="article">
+    <h1>Scraping news with Python</h1>
+    <h2>June 2020 | <a href="/2020/06/scraping-news-with-python/">Permalink</a></h2>
+    <figure class="hero">
+        <img src="/post-assets/illustrations/2020/scraping-news-with-python.svg">
+        <figcaption>Illustration by <a href="https://www.instagram.com/barbara_rodeghiero" target="_blank" rel="noopener">Barbara</a></figcaption>
+    </figure>
+
+    <div class="article__content">
+        <p>In this article, I will explore how you can scrape a newspaper website and extract articles using <strong>python</strong> and the command line. 
+In general, I would recommend python for everything that involves CLI for its excellent tooling.</p>
+
+<p>Let’s have a look at how this can be achieved using <strong>click</strong> (to install
+it you can <strong>pip install click</strong>), a python library that streamlines your work on the CLI:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">command</span><span class="p">()</span>
+<span class="o">@</span><span class="n">click</span><span class="p">.</span><span class="n">option</span><span class="p">(</span><span class="s">"--scraper"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">scraper</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Since every website is built differently in terms of html elements, we would want to separate our scrapers into different classes and provide a dedicated extraction logic.
+A simple <a href="https://en.wikipedia.org/wiki/Strategy_pattern">strategy pattern</a> will allow us to pick the correct scraper according to the command line argument:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_scraper</span><span class="p">(</span><span class="n">scraper</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">scraper</span> <span class="o">+</span> <span class="s">"Scraper"</span> <span class="c1"># NewsPaperScraper class
+</span>        <span class="n">module</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">name</span><span class="p">)()</span>
+    <span class="k">except</span> <span class="nb">ModuleNotFoundError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now that we have our scraper class and an available instance of it, we need a way to reach the news website and read its content. A simple <em>get</em> request in python can be carried out using <strong>requests</strong> (to install it you can <strong>pip install requests</strong>):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://www.newspaper.com"</span><span class="p">)</span>
+<span class="n">page</span><span class="p">.</span><span class="n">text</span> <span class="c1"># your news in html
+</span></code></pre></div></div>
+
+<p>To extract articles from a piece of html we need an html tree traverser. Thankfully, there’s a nice library called <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">BeautifulSoup</a> that does just that (among other things). Let’s install it with <strong>pip install beautifulsoup4</strong>. Before using our scraped html with BeatifulSoup, we also need to make sure it’s encoded correctly:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_parser</span><span class="p">(</span><span class="n">registered_scraper</span><span class="p">,</span> <span class="n">html</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">registered_scraper</span><span class="p">.</span><span class="n">encoding</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="k">return</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="s">"html.parser"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Finally, let’s implement our news scraper:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NewsPaperScraper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="s">"https://www.newspaper.com"</span>
+    <span class="n">encoding</span> <span class="o">=</span> <span class="s">"utf-8"</span>
+
+    <span class="k">def</span> <span class="nf">extract_articles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+        <span class="c1"># simplified, you might need to lookup specific DOM elements
+</span>        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">extract_article</span><span class="p">,</span> <span class="n">parser</span><span class="p">.</span><span class="n">select</span><span class="p">(</span><span class="s">".news-article"</span><span class="p">)))</span>
+    
+    <span class="k">def</span> <span class="nf">extract_article</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">article_block</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">article_block</span><span class="p">.</span><span class="n">getText</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="wrapping-it-all-up">Wrapping it all up</h3>
+
+<p>You can have a look at a working example for <a href="https://www.bbc.co.uk/news">BBC News</a> on my <a href="https://github.com/sergiomartino/python-news-scraper">github repo</a>. Just clone the repo and install from <strong>requirements.txt</strong> :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+python scrape.py <span class="nt">--scraper</span><span class="o">=</span>BBCNews
+</code></pre></div></div>
+
+        <hr />
+    </div>
+</article>
+</section>
+        </main>
+    </div>
+  </body>
+</html>

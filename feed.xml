@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://blog.sergiomartino.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://blog.sergiomartino.com/" rel="alternate" type="text/html" /><updated>2021-01-09T02:10:04-06:00</updated><id>https://blog.sergiomartino.com/feed.xml</id><title type="html">Dailygrind</title><subtitle>A blog about web development written by Sergio Martino, a frontend software engineer.</subtitle><author><name>Sergio Martino</name></author><entry><title type="html">A 2020 retrospective</title><link href="https://blog.sergiomartino.com/2021/01/2020-a-retrospective/" rel="alternate" type="text/html" title="A 2020 retrospective" /><published>2021-01-01T00:00:00-06:00</published><updated>2021-01-01T00:00:00-06:00</updated><id>https://blog.sergiomartino.com/2021/01/2020-a-retrospective</id><content type="html" xml:base="https://blog.sergiomartino.com/2021/01/2020-a-retrospective/">&lt;p&gt;This past year has been a wild ride. Our communities have been through what has been one of the &lt;a href=&quot;https://www.discovermagazine.com/planet-earth/the-worst-year-in-history-is-2020-a-contender&quot;&gt;worst years in history&lt;/a&gt;, one that transformed how we live, work and socialise. Some of these changes are going to &lt;a href=&quot;https://www.forbes.com/sites/johnhall/2020/09/21/these-temporary-covid-19-changes-will-become-permanent/?sh=64b37f6f7fc6&quot;&gt;permanent&lt;/a&gt; and there is &lt;a href=&quot;https://www.weforum.org/great-reset/&quot;&gt;speculation&lt;/a&gt; that the impact of these straordinary events could transform society in a way and scale never seen before.&lt;/p&gt;
+
+&lt;p&gt;With this in mind, I am grateful I have been able to continue doing my job in 2020, something I love to boot, and I am prepared to embrace/confront change in the upcoming year. So let’s review some of the things I found interesting during the year and what I find exciting looking at 2021.&lt;/p&gt;
+
+&lt;h3 id=&quot;looking-back&quot;&gt;Looking back&lt;/h3&gt;
+
+&lt;p&gt;I am surprised to still see React being a top choice for frontend applications. I had a feeling that following the introduction of &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot;&gt;Hooks&lt;/a&gt; and &lt;a href=&quot;https://reactjs.org/docs/concurrent-mode-patterns.html&quot;&gt;Concurrent Mode&lt;/a&gt;, the library embarked on a tortuous path where &lt;a href=&quot;https://developerexperience.io/practices/good-developer-experience&quot;&gt;DX&lt;/a&gt; would have resulted being subpar compared to other frameworks. This has not happened yet, however I do sense that React is becoming more and more of a black box and &lt;a href=&quot;https://svelte.dev/&quot;&gt;niche alternatives&lt;/a&gt; could soon replace it.&lt;/p&gt;
+
+&lt;p&gt;I was happy to see &lt;a href=&quot;https://medium.com/@ScriptedAlchemy&quot;&gt;Zach Jackson&lt;/a&gt; make it to Webpack with his &lt;a href=&quot;https://webpack.js.org/concepts/module-federation/&quot;&gt;Module Federation&lt;/a&gt; plugin. This plugin makes Microfrontends development much easier. I have written extensively about this topic on a &lt;a href=&quot;/2020/11/microfrontends-an-expensive-recipe-for-frontend-applications/&quot;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The first stable version of &lt;a href=&quot;https://deno.land&quot;&gt;Deno&lt;/a&gt; caught my attention early this year, mainly because of its ability to import remote modules directly without using &lt;strong&gt;Npm&lt;/strong&gt;. It has some other interesting features, such as &lt;strong&gt;Typescript&lt;/strong&gt; support, but before diving into a “let’s replace &lt;strong&gt;Node&lt;/strong&gt;” discussion, I am waiting to see whether its adoption increases.&lt;/p&gt;
+
+&lt;p&gt;As a big fan of the language, I welcomed &lt;a href=&quot;https://devblogs.microsoft.com/typescript/announcing-typescript-4-0/&quot;&gt;Typescript v4&lt;/a&gt;. It has proven to be a mature language so far and something that can be relied upon even within an enterprise environment.&lt;/p&gt;
+
+&lt;p&gt;I resumed my &lt;a href=&quot;/about-this-blog&quot;&gt;personal blog&lt;/a&gt; in May, after it being offline for years. In only a few months of life I found an excuse to migrate it ¯_(ツ)_/¯ from &lt;a href=&quot;https://laravel.com/docs/master/blade&quot;&gt;PHP/Laravel Blade&lt;/a&gt; to &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;. It was totally unnecessary, but hei… you have got to love these SSGs.&lt;/p&gt;
+
+&lt;h3 id=&quot;looking-forward&quot;&gt;Looking forward&lt;/h3&gt;
+
+&lt;p&gt;I am keen to see whether &lt;a href=&quot;https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html&quot;&gt;React Server Components&lt;/a&gt; take on and whether they will be pushing  &lt;a href=&quot;https://microservices.io/patterns/apigateway.html&quot;&gt;Backends for Frontends&lt;/a&gt; patterns further. With &lt;strong&gt;Cloud&lt;/strong&gt; becoming cheaper and backend framework features improving frontend UX (&lt;a href=&quot;https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor&quot;&gt;Blazor&lt;/a&gt;, &lt;a href=&quot;https://turbo.hotwire.dev/&quot;&gt;Hotwire&lt;/a&gt;), I can definitely see frontend and backend development converge.&lt;/p&gt;
+
+&lt;p&gt;I am watching &lt;a href=&quot;https://recoiljs.org/&quot;&gt;Recoil&lt;/a&gt; closely. I do like the concept and the &lt;a href=&quot;https://recoiljs.org/docs/introduction/motivation&quot;&gt;problem it is trying to solve&lt;/a&gt;. At the same time, I am just happy to give up &lt;strong&gt;Redux&lt;/strong&gt;, which I find overly verbose. I would be wary considering it    for production: it is still in version 0.1.2 as I type.&lt;/p&gt;
+
+&lt;p&gt;I am eyeing &lt;a href=&quot;https://svelte.dev/&quot;&gt;Svelte&lt;/a&gt; and its application framework &lt;a href=&quot;https://sapper.svelte.dev/&quot;&gt;Sapper&lt;/a&gt;. While I will probably get a chance to use some of these tools at my job, I am keen to see whether the adoption of &lt;strong&gt;Svelte&lt;/strong&gt; by &lt;a href=&quot;https://www.spotify.com/uk/&quot;&gt;important companies&lt;/a&gt; will increase its popularity and allow it to become a better equipped &lt;strong&gt;React&lt;/strong&gt;/&lt;strong&gt;Vue&lt;/strong&gt; competitor.&lt;/p&gt;
+
+&lt;p&gt;I am expecting &lt;a href=&quot;https://angular.io/&quot;&gt;Angular&lt;/a&gt; to decline in popularity. While &lt;strong&gt;Angular&lt;/strong&gt; is still very popular today, it does seem to be in the same position &lt;strong&gt;jQuery&lt;/strong&gt; was few years ago: I would not start a new project with it.&lt;/p&gt;
+
+&lt;p&gt;Last but not least, web support for &lt;a href=&quot;https://flutter.dev/web&quot;&gt;Flutter&lt;/a&gt; should come out of beta. This is an intriguing platform, as it uses a mixture of &lt;strong&gt;Custom Elements&lt;/strong&gt; and &lt;strong&gt;Canvas&lt;/strong&gt; to paint on the browser. I am not entirely convinced by the paradigm (and &lt;strong&gt;Dart&lt;/strong&gt; as platform language), but when Google does it, it is worth taking notes.&lt;/p&gt;
+
+&lt;h3 id=&quot;worth-of-mention&quot;&gt;Worth of mention&lt;/h3&gt;
+
+&lt;ul class=&quot;linked-list&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=6avJHaC3C2U&quot;&gt;The Art of Code&lt;/a&gt; (&lt;em&gt;Dylan Beattie - NDC Conf London&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://overreacted.io/goodbye-clean-code/&quot;&gt;Goodbye, Clean Code&lt;/a&gt; (&lt;em&gt;Dan Abramov - React Core Team&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;thanks-to&quot;&gt;Thanks to&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.feedspot.com&quot;&gt;Feedspot&lt;/a&gt; for including my blog into their &lt;a href=&quot;https://blog.feedspot.com/javascript_blogs/&quot;&gt;Top 30 Javascript Blogs&lt;/a&gt;.&lt;/p&gt;</content><author><name>Sergio Martino</name></author><summary type="html">A brief summary of what I found interesting in 2020 and what I am looking forward to in 2021.</summary></entry><entry><title type="html">Microfrontends: an expensive recipe for frontend applications</title><link href="https://blog.sergiomartino.com/2020/11/microfrontends-an-expensive-recipe-for-frontend-applications/" rel="alternate" type="text/html" title="Microfrontends: an expensive recipe for frontend applications" /><published>2020-11-15T00:00:00-06:00</published><updated>2020-11-15T00:00:00-06:00</updated><id>https://blog.sergiomartino.com/2020/11/microfrontends-an-expensive-recipe-for-frontend-applications</id><content type="html" xml:base="https://blog.sergiomartino.com/2020/11/microfrontends-an-expensive-recipe-for-frontend-applications/">&lt;p&gt;Microfrontends is a new trend in the frontend world however, the idea of being able to compose an application out of other
+independent applications is not new. Previous experiences such as &lt;a href=&quot;https://en.wikipedia.org/wiki/Java_Portlet_Specification&quot;&gt;Java Portlets&lt;/a&gt; have not been very successful while other companies, such as &lt;a href=&quot;https://medium.com/hacking-talent/two-years-of-micro-frontends-a-retrospective-522526f76df4&quot;&gt;Beamery&lt;/a&gt; or &lt;a href=&quot;https://www.quora.com/How-is-JavaScript-used-within-the-Spotify-desktop-application-Is-it-packaged-up-and-run-locally-only-retrieving-the-assets-as-and-when-needed-What-JavaScript-VM-is-used/answer/Mattias-Petter-Johansson&quot;&gt;Spotify&lt;/a&gt;, have tried the Microfrontends path with mixed results.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I would bet that the Spotify desktop client is among the top 25 most intricate uses of JavaScript in the world. — &lt;em&gt;Mattias Petter Johansson (Spotify)&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Despite that success, we found our move to micro-frontends also created some new challenges for us. If you’re thinking about taking this path, we hope that you can learn from our experience — &lt;em&gt;Brody Mckee (Beamery)&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Within the Microfrontends discussion, &lt;a href=&quot;https://overreacted.io&quot;&gt;Dan Abramov&lt;/a&gt; (React Core team, Redux creator) condensed his concerns in a popular &lt;a href=&quot;https://twitter.com/dan_abramov/status/1132493678730252288&quot;&gt;tweet&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I don’t understand Microfrontends — &lt;em&gt;Dan Abramov&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Why this Microfrontends trend then? Is there substance to it? Is it worth considering?&lt;/p&gt;
+
+&lt;h3 id=&quot;the-monolith&quot;&gt;The monolith&lt;/h3&gt;
+
+&lt;p&gt;Single Page Applications have been around for a decade or so and while classic backend frameworks can provide a decent UX on the frontend (ie: &lt;a href=&quot;https://guides.rubyonrails.org/working_with_javascript_in_rails.html#turbolinks&quot;&gt;Turbolinks&lt;/a&gt;, &lt;a href=&quot;https://laravel-livewire.com&quot;&gt;LiveWire&lt;/a&gt;), they have been the de-facto standard when it comes to the view layer for most applications.&lt;/p&gt;
+
+&lt;p&gt;A &lt;em&gt;frontend monolith&lt;/em&gt; is the result of years of continuous development and related technical debt within a single page application. The challanges that come with these kind of applications, independently from the team’s engineering discipline, mostly revolve around dependency management, backend coupling, upgrade and more generally scalability. 
+Managing a Monolith is perfectly acceptable and sometimes the most efficient way to manage the codebase, especially in smaller teams, as it allows consistent deliveries within a simple architecture.&lt;/p&gt;
+
+&lt;p&gt;A migration path for a Monolith is complex as it does not offer a clean way to implement incremental structural changes however, breaking changes would be packaged within a single codebase and could be managed successfully. More often than not, a migration of a Monolith simply means developing a new version alongside a legacy version: old code might be difficult to read, but it would not come with side effects.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://changelog.com/posts/monoliths-are-the-future&quot;&gt;Monoliths are the future&lt;/a&gt; — &lt;em&gt;Kelsey Hightower (Principal Developer Advocate, Google)&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;multiple-frontends&quot;&gt;Multiple Frontends&lt;/h3&gt;
+
+&lt;p&gt;Microfrontends is an architecture pattern that offers an alternative to the &lt;em&gt;frontend monolith&lt;/em&gt; by breaking up the frontend into multiple frontends, each with its own lifecycle. Being able to administer an application lifecycle independently from other applications allows teams to deploy features to production faster, as they face less dependencies, a concise scope and less risk of failures.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Reducing waiting time between teams is micro frontends’ primary goal. — &lt;em&gt;Michael Geers (Author of Microfrontends in Action, Manning 2020)&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The frontend market today offers decent alternatives to the infamous &lt;a href=&quot;https://hub.packtpub.com/spotify-has-one-of-the-most-intricate-uses-of-javascript-in-the-world-says-former-engineer/&quot;&gt;Spotify’s iframe orchestration&lt;/a&gt;: Webpack’s &lt;a href=&quot;https://webpack.js.org/concepts/module-federation/&quot;&gt;Module Federation&lt;/a&gt;, &lt;a href=&quot;https://opencomponents.github.io/&quot;&gt;Open Components&lt;/a&gt; or technology agnostic frameworks such as &lt;a href=&quot;https://single-spa.js.org&quot;&gt;Single Spa&lt;/a&gt; are prime solutions for implementing Microfrontends, despite their young age.&lt;/p&gt;
+
+&lt;p&gt;Managing multiple frontends however is not cheap. While the feature frontends might benefit from a reduced scope and a clean API to communicate with the rest of the application, 
+the &lt;em&gt;orchestrator&lt;/em&gt; grows in complexity among managing standards, shared state, cache, features API, a uniform UX and inevitable breaking changes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;…a bug on this layer could blow up the entire application and the implementation of new features, if not well co-ordinated, could slow down other teams creating a cross-team dependency — &lt;em&gt;Luca Mezzalira (DAZN)&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Is the complexity worth it?&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;I feel that Microfrontends is a viable solution for scaling frontend within large teams (&amp;gt; 30 developers) working on a single codebase. Even though teams built this way are &lt;a href=&quot;https://en.wikipedia.org/wiki/Conway%27s_law&quot;&gt;a product of the organisation’s communication structure&lt;/a&gt;, at this scale, it might be a necessary cost in exchange for faster deliveries. Scaling Microfrontends from 30 developers to 100 is a log operation and could incentivise large organisations to structure the teams after the business domain.&lt;/p&gt;
+
+&lt;p&gt;On the other side, Microfrontends would be an unnecessary complication for smaller teams where a Monolith could be improved and scaled by simply investing in better engineering standards.&lt;/p&gt;
+
+&lt;h3 id=&quot;useful-resources&quot;&gt;Useful resources&lt;/h3&gt;
+
+&lt;ul class=&quot;linked-list&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/articles/micro-frontends.html&quot;&gt;Microfrontends&lt;/a&gt; (Martin Fowler)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@lucamezzalira/i-dont-understand-micro-frontends-88f7304799a9&quot;&gt;I don’t understand Microfrontends&lt;/a&gt; (Luca Mezzalira)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://micro-frontends.org&quot;&gt;Extending the microservice idea to frontend development&lt;/a&gt; (Michael Geers)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://changelog.com/posts/monoliths-are-the-future&quot;&gt;Monoliths are the future&lt;/a&gt; (Kelsey Hightower)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.microservices.com/talks/mosaic-microservices-zalando-tech&quot;&gt;Microservices at Zalando&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Sergio Martino</name></author><summary type="html">Are Microfrontends worth the complexity? An overview of Microfrontends pros and cons.</summary></entry><entry><title type="html">A simple validation model, leveraging discriminated unions</title><link href="https://blog.sergiomartino.com/2020/09/a-simple-validation-model-leveraging-discriminated-unions/" rel="alternate" type="text/html" title="A simple validation model, leveraging discriminated unions" /><published>2020-09-15T00:00:00-05:00</published><updated>2020-09-15T00:00:00-05:00</updated><id>https://blog.sergiomartino.com/2020/09/a-simple-validation-model-leveraging-discriminated-unions</id><content type="html" xml:base="https://blog.sergiomartino.com/2020/09/a-simple-validation-model-leveraging-discriminated-unions/">&lt;p&gt;Validation is a common part of web applications. Different patterns for validation apply at different application layers (ie: input, data model, network schemas) and types (ie: data, ranges or constraints, structure) with a common goal: making sure the data we deal with is &lt;em&gt;correct&lt;/em&gt; and &lt;em&gt;useful&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this article I will be exploring a simple pattern for data model validation in &lt;a href=&quot;https://www.typescriptlang.org/&quot;&gt;Typescript&lt;/a&gt; and how &lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions&quot;&gt;discrimnated unions&lt;/a&gt; can help structuring a validation object.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-goal&quot;&gt;The goal&lt;/h3&gt;
+
+&lt;p&gt;Let’s start from what we are trying to achieve: a pattern for validating data and a consumable feedback object:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationResult&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;String must be at least 3 characters long&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this scenario, all validation results must adhere to the &lt;strong&gt;ValidationResult&lt;/strong&gt; interface. The resulting feedback object will contain the result of the computation as well as errors, if any.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-naive-approach&quot;&gt;A naive approach&lt;/h3&gt;
+
+&lt;p&gt;We might want to start by typing our validation object, which could look like the one below:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The intent with the above is to cater for both successful and unsuccessful validations. Upon an unsuccessful validation, we can provide an error message to be used by the consumer.&lt;/p&gt;
+
+&lt;p&gt;A successful validation flow would be similar to the one below:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;hello world&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// success, let's proceed   &lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Neat. Let’s have a look at an unsuccessful validation result:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;hi&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The compiler here might complain that the &lt;strong&gt;log&lt;/strong&gt; function is being fed a value that may be possibly undefined (assumes &lt;strong&gt;strictNullChecks&lt;/strong&gt; is used).&lt;/p&gt;
+
+&lt;p&gt;One way around it, which I would not recommend (it defeats the purpose of having a static type environment), is the &lt;em&gt;non-null assertion operator&lt;/em&gt; &lt;strong&gt;!&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// all good, thanks to a bang!&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Another way around it is using a &lt;em&gt;type-guard&lt;/em&gt;, a function that declares a type predicate:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isSuccessfulValidationResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationResult&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SuccessfulValidationResult&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isUnsuccessfulValidationResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationResult&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UnsuccessfulValidationResult&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A type-guard check will guarantee the scope we are expecting:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isUnsuccessfulValidationResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validationResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// validationResult is UnsuccessfulValidationResult&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// error is defined&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validationResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A better way of solving the issue is looking at types and assessing whether narrowing down types, so that the compiler can be made aware of &lt;em&gt;successful&lt;/em&gt; and &lt;em&gt;unsuccessful&lt;/em&gt; contexts, is a viable solution.&lt;/p&gt;
+
+&lt;h3 id=&quot;discriminated-unions-to-the-rescue&quot;&gt;Discriminated Unions to the rescue&lt;/h3&gt;
+
+&lt;p&gt;There is indeed a way to instruct the compiler about the different contexts: &lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions&quot;&gt;Discriminated Unions&lt;/a&gt; and a stricter type for the result.&lt;/p&gt;
+
+&lt;p&gt;Consider the type below:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SuccessfulValidationResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UnsuccessfulValidationResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+    &lt;span class=&quot;nl&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SuccessfulValidationResult&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; 
+&lt;span class=&quot;nx&quot;&gt;UnsuccessfulValidationResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that the &lt;strong&gt;result&lt;/strong&gt; types have been narrowed from boolean to &lt;strong&gt;true&lt;/strong&gt; and &lt;strong&gt;false&lt;/strong&gt;. Two distinct validation result types will require us to discriminate the types in our validation function while keeping the &lt;strong&gt;ValidationResult&lt;/strong&gt; contract:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ValidationResult&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SuccessfulValidationResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;String must be at least 3 characters long&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UnsuccessfulValidationResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The narrowed boolean types and the discriminated unions allow the compiler to provide the correct context depending on the code flow:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// context is SuccessfulValidationResult&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// context is UnsuccessfulValidationResult,&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// error is a defined property, therefore:&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;validation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;useful-resources&quot;&gt;Useful resources&lt;/h3&gt;
+
+&lt;ul class=&quot;linked-list&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Data_validation&quot;&gt;Data Validation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions&quot;&gt;Discriminated Unions&lt;/a&gt; (TS Handbook)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://2ality.com/2020/01/special-values-typescript.html#discriminated-unions&quot;&gt;Discriminated Unions&lt;/a&gt; (2ality blog)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Sergio Martino</name></author><summary type="html">A simple data validation pattern using discriminated unions in Typescript.</summary></entry><entry><title type="html">Decision making using a strategy</title><link href="https://blog.sergiomartino.com/2020/08/decision-making-using-a-strategy/" rel="alternate" type="text/html" title="Decision making using a strategy" /><published>2020-08-15T00:00:00-05:00</published><updated>2020-08-15T00:00:00-05:00</updated><id>https://blog.sergiomartino.com/2020/08/decision-making-using-a-strategy</id><content type="html" xml:base="https://blog.sergiomartino.com/2020/08/decision-making-using-a-strategy/">&lt;p&gt;Developing software through code mostly means applying well estabilished design patterns. This is no different then choosing the most popular recipe to cook a beef Wellington:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You want to rely on battle-tested experience&lt;/li&gt;
+  &lt;li&gt;You want to make sure the process is streamlined&lt;/li&gt;
+  &lt;li&gt;You want to minimise disruption and the risk of failure&lt;/li&gt;
+  &lt;li&gt;You want guaranteed results&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Design patterns are recipe frameworks: problems that have already been solved successfully and efficiently in the past do not require a new solution. Design patterns in fact, are the foundation on top of which all software is built.&lt;/p&gt;
+
+&lt;p&gt;I will not go through the different types of software design patterns (some of which I honestly have very little knowledge of), but I would like to focus on a particular &lt;a href=&quot;https://en.wikipedia.org/wiki/Behavioral_pattern&quot;&gt;behavioural&lt;/a&gt; pattern that I found myself committing to very often while developing frontend applications.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-strategy-pattern&quot;&gt;The Strategy Pattern&lt;/h3&gt;
+
+&lt;p&gt;The Strategy Pattern can be defined as a class of implementations that can be chosen at run-time by a context class. This definition seems to refer to an object-oriented architecture however, we will see how elements of strategy patterns can be applied in a functional way as well.&lt;/p&gt;
+
+&lt;p&gt;So how does it work in practice?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We want our customers app to have a “contact” functionality and we are expected to use their preferred contact method (email or phone for example) — &lt;em&gt;The Business&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In this scenario, you might have a customer representation that looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;phoneNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;CustomerPhone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;phoneNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This approach allows the software to invoke the &lt;strong&gt;contact&lt;/strong&gt; method and utilise the underlying functionality: a &lt;strong&gt;CustomerPhone&lt;/strong&gt; class method to dial a number.&lt;/p&gt;
+
+&lt;p&gt;How does that cater for cases where the customer prefers to be contacted by email? It does not. Nothing stops us from discriminating the functionality within the method though:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prefersEmails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;CustomerEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;CustomerPhone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;phoneNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There’s nothing inherently wrong with this approach, however you might already guess what could go south if more functionality depends on a customer’s contact preference.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A customer who prefers emails will be subscribed to our monthly newsletter, otherwise we will send them a catalogue by post. — &lt;em&gt;The Business&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let us see how this could be translated into a &lt;strong&gt;Customer&lt;/strong&gt; class method:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendMarketingMaterial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prefersEmails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;CustomerNewsletter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;CustomerCatalogue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It is self evident that our &lt;strong&gt;Customer&lt;/strong&gt; class is being polluted from these contact preference checks and that could result in maintenance hardship down the road.&lt;/p&gt;
+
+&lt;p&gt;A &lt;em&gt;strategy pattern&lt;/em&gt; in this scenario will encapsulate the contact preference check into a system where this choice is made once and a whole package of behaviours is derived from it. It starts with an interface that defines which behaviours of a &lt;strong&gt;Customer&lt;/strong&gt; class we intend to target:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactStrategy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For each behaviour we intend to implement, we define a class that must implement &lt;strong&gt;CustomerContactStrategy&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerPhoneContactStrategy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactStrategy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;CustomerPhone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;phoneNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerEmailContactStrategy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactStrategy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;CustomerEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once the strategies are defined, we need to transform our &lt;strong&gt;Customer&lt;/strong&gt; class into a &lt;em&gt;strategy context&lt;/em&gt; class (a class that supports a strategy):&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;strategy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;strong&gt;Customer&lt;/strong&gt; instance will now be able to hold a reference to a &lt;em&gt;behaviour&lt;/em&gt; strategy (hence the name of behavioural pattern). By invoking the &lt;strong&gt;contact&lt;/strong&gt; method, the underlying strategy will be able to complete the task in the desired way.&lt;/p&gt;
+
+&lt;p&gt;Choosing the right method at run-time can be as easy as a ternary operator:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;customerPrefersEmails&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerEmailContactStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerPhoneContactStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The decision node here lies on &lt;strong&gt;customerPrefersEmails&lt;/strong&gt;, a boolean value. Upon more complex decision flows, this might be delegated to a different class altogether:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setStrategy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CustomerContactStrategies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;choose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above code is an implementation of a &lt;a href=&quot;https://en.wikipedia.org/wiki/Factory_(object-oriented_programming)&quot;&gt;factory pattern&lt;/a&gt; and demonstrates how adhering to a design pattern might be beneficial as the software complexity increases.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-strategy-pattern-in-functional-programming&quot;&gt;The Strategy pattern in functional programming&lt;/h3&gt;
+
+&lt;p&gt;The strategy pattern, as designed above, can only be applied in an object oriented architecture however elements of strategy can also be applied to function composition.&lt;/p&gt;
+
+&lt;p&gt;Let us review our strategies using functions:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactMethod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;emailCustomer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactMethod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;CustomerEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;phoneCustomer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactMethod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;CustomerPhone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;phoneNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And compose behaviour:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contactCustomerViaPreferredMethod&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CustomerContactMethod&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contactCustomerViaEmail&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contactCustomerViaPreferredMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;emailCustomer&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contactCustomerViaPhone&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contactCustomerViaPreferredMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;phoneCustomer&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;// ....&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customerPrefersEmails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;contactCustomerViaEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;contactCustomerViaPhone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On more complex decision flows, using a &lt;strong&gt;tuple&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sendMarketingMaterial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getCustomerInteractionMethods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;getCustomerPreferredContactMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;contact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;sendMarketingMaterial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;in-conclusion&quot;&gt;In Conclusion&lt;/h3&gt;
+
+&lt;p&gt;A class-based strategy pattern in frontend applications is quite unlikely these days however, mastering strategies through function composition will get you very far, especially using those frameworks which seem to have embraced a functional approach to components (ie: &lt;a href=&quot;https://reactjs.org/docs/hooks-intro.html&quot;&gt;React Hooks&lt;/a&gt;, &lt;a href=&quot;https://composition-api.vuejs.org/api.html&quot;&gt;Vue Composition API&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;useful-resources&quot;&gt;Useful resources&lt;/h3&gt;
+
+&lt;ul class=&quot;linked-list&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Strategy_pattern&quot;&gt;https://en.wikipedia.org/wiki/Strategy_pattern&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://addyosmani.com/resources/essentialjsdesignpatterns/book/&quot;&gt;https://addyosmani.com/resources/essentialjsdesignpatterns/book/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/javascript-scene/composing-software-an-introduction-27b72500d6ea&quot;&gt;https://medium.com/javascript-scene/composing-software-an-introduction-27b72500d6ea&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Sergio Martino</name></author><summary type="html">An overview on the Strategy Pattern and how it can help solving problems within an OOP or FP architecture.</summary></entry><entry><title type="html">The case against Regular Expressions</title><link href="https://blog.sergiomartino.com/2020/07/the-case-against-regular-expressions/" rel="alternate" type="text/html" title="The case against Regular Expressions" /><published>2020-07-15T00:00:00-05:00</published><updated>2020-07-15T00:00:00-05:00</updated><id>https://blog.sergiomartino.com/2020/07/the-case-against-regular-expressions</id><content type="html" xml:base="https://blog.sergiomartino.com/2020/07/the-case-against-regular-expressions/">&lt;p&gt;A regular expression is a sequence of symbols that defines a pattern. This pattern is then used to search for characters or combinations of characters within text.&lt;/p&gt;
+
+&lt;p&gt;In its simplest form, regular expressions can provide a viable method for text matching and extraction, using a concise api (in the javascript world, it would be the &lt;strong&gt;RegExp&lt;/strong&gt; api). Below is an example of how regular expressions can help on working with text:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// constructor form&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;RegExp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;https?://(www&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;.)?youtube&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;.com/(watch|playlist).*&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+
+&lt;span class=&quot;c1&quot;&gt;// literal form&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;/https&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;:/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;www&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.)?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;youtube&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;playlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Looking at the above code, you can clearly identify the intent without looking much at symbols and flags. It is trying to match/extract Youtube videos or playlist urls.&lt;/p&gt;
+
+&lt;p&gt;Let’s have a look at a different and apparently simple example: a library book feed. Book records might look like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+The Hunger Games, Suzanne Collins - ISBN: 0439023483 - pages 374
+Gone with the Wind, Margaret Mitchell - ISBN: 0446675539  - pages 1037
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If I was requested to extract the ISBN number for each of the feed records, a regular expression would definitely be one of the solutions I could be looking at:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bookPattern&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/ISBN:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s(\d&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/gm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A developer looking at this code may realise that I am trying to match the ISBN number or be looking for text around the ISBN number. After decoding the pattern, he might be able to find that I was in fact trying to match:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;an “ISBN” label&lt;/li&gt;
+  &lt;li&gt;followed by a space&lt;/li&gt;
+  &lt;li&gt;followed by some numbers&lt;/li&gt;
+  &lt;li&gt;in all lines of text&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Indeed, that is the intent. The results would be acceptable, but not exactly what we wanted (due to how grouping works):&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bookPattern&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// [&quot;ISBN: 0439023483&quot;, &quot;ISBN: 0446675539&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In order to match the ISBN number only, we would not be searching for the “ISBN label, followed by a space, followed by a number” but rather the “ISBN number, preceeded by the ISBN label”. It does seems like a small tweak on our pattern: in practice, we are looking to introduce a &lt;strong&gt;positive lookbehind assertion&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Our pattern would then look like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bookPattern&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;(?&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;=ISBN:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s)(\d&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/gm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// [&quot;0439023483&quot;, &quot;0446675539&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And no, it is not small tweak to me.&lt;/p&gt;
+
+&lt;p&gt;It is somewhat reasonable to expect a developer to decode the pattern however, there are a number of symbols that create noise and on more convoluted scenarios they could possibly divert the focus from the business problem itself.&lt;/p&gt;
+
+&lt;p&gt;Let’s say we have a new business requirement:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We just want 13-digit ISBNs and only if the record specifies the number of pages. - &lt;em&gt;The Business&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It seems like a realistic request, let’s see how this translates into work:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bookPattern&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;(?&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;=ISBN:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s)(\d{13})(?=\s&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/gm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Frankly speaking, our pattern now looks more like a &lt;em&gt;merge conflict&lt;/em&gt; rather than an high level piece of code.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, the data that we happen to work with is rarely well structured and abusing regular expressions is also quite common. Here is a solution proposed in a &lt;a href=&quot;https://stackoverflow.com/a/8234912&quot;&gt;Stackoverflow thread&lt;/a&gt; for somebody looking to validate a url:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&amp;amp;=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&amp;amp;=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&amp;amp; %@.\w_]*)#?(?:[\w]*))?)/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Trying to understand the above is time consuming and even though the intent could be manifested using variables or test coverage, I would not want to find myself looking at an uncomprehensible, unmaintanable piece of code.&lt;/p&gt;
+
+&lt;h3 id=&quot;alternatives-to-using-regular-expressions&quot;&gt;Alternatives to using Regular Expressions&lt;/h3&gt;
+
+&lt;p&gt;Abstracting regular expressions is quite unpopular and there seem to be an unconditioned love for regular expressions in the developer world which I struggle to understand: to me, this is a problem worth abstracting as explained in this article.&lt;/p&gt;
+
+&lt;p&gt;Fortunately, I’m not alone in thinking this way and libraries such as &lt;a href=&quot;https://github.com/VerbalExpressions&quot;&gt;Verbal Expressions&lt;/a&gt; offer a great api to constructing regular expression patterns. I would watch out for the &lt;a href=&quot;https://github.com/VerbalExpressions/JSVerbalExpressions/pull/198&quot;&gt;the upcoming version 2.0&lt;/a&gt;, a complete rewrite with an increased support for patterns.&lt;/p&gt;
+
+&lt;p&gt;Sometimes breaking the problem into smaller parts, perhaps resorting to array/string manipulation (mind the performance!) can also be a viable, but often overlooked, alternative.&lt;/p&gt;
+
+&lt;h3 id=&quot;in-conclusion&quot;&gt;In Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Regular Expressons are powerful tools and with power comes responsibility.&lt;/p&gt;
+
+&lt;p&gt;I find most regular expressions patterns easy to construct, but not so easy to decode and I tend to use them only if the pattern is immediately readable. I am not surprised a native abstraction is not available (there is no javascript Standard Library, let alone a regex package) however the language and its developers would benefit from a higher level api.&lt;/p&gt;</content><author><name>Sergio Martino</name></author><summary type="html">Regular expressions are powerful tools but they come at a price. The article explores why sometimes alternatives should be preferred.</summary></entry><entry><title type="html">State and reactivity in Vue</title><link href="https://blog.sergiomartino.com/2020/06/state-and-reactivity-in-vue/" rel="alternate" type="text/html" title="State and reactivity in Vue" /><published>2020-06-16T00:00:00-05:00</published><updated>2020-06-16T00:00:00-05:00</updated><id>https://blog.sergiomartino.com/2020/06/state-and-reactivity-in-vue</id><content type="html" xml:base="https://blog.sergiomartino.com/2020/06/state-and-reactivity-in-vue/">&lt;p&gt;In one of my &lt;a href=&quot;/article/a-state-management-journey&quot;&gt;previous articles&lt;/a&gt;, I mentioned how it is possible to design a simple state manager in Vue by using &lt;strong&gt;observable&lt;/strong&gt;. The Observable API has been available in Vue since version 2 however, with version 3 the &lt;strong&gt;reactive&lt;/strong&gt; object is no longer directly modified but proxied into. Let’s have a look how both work in detail:&lt;/p&gt;
+
+&lt;p&gt;In Vue 2, a reactive store might look like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// store.js&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;observable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can provide the components with a basic &lt;strong&gt;dispatch&lt;/strong&gt; function that will collect an action with a payload and that will take care of
+updating the state. Also, we might want to provide a &lt;strong&gt;getters&lt;/strong&gt; helper so that the store values can be reached as &lt;em&gt;computed&lt;/em&gt; properties:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// store.js&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;increment-orders&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In our Vue component, we register the getters and use &lt;strong&gt;dispatch&lt;/strong&gt; to notify the store about a user event:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;have&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;orders&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; 
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;increment()&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/a&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/template&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;increment-orders&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;vue-3-and-the-composition-api&quot;&gt;Vue 3 and the Composition API&lt;/h3&gt;
+
+&lt;p&gt;With the introduction of the &lt;em&gt;Composition API&lt;/em&gt;, operating with reactive properties is much simpler. The above example could
+be easily refactored to follow the new constructs. Here, &lt;strong&gt;reactive&lt;/strong&gt; replaced the functionality that &lt;em&gt;observable&lt;/em&gt; was providing:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// store.js&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reactive&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reactive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;orders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Component.vue&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./store&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;increment-orders&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can read more about the Vue Composition API on its &lt;a href=&quot;https://composition-api.vuejs.org/&quot;&gt;RFC Page&lt;/a&gt;.&lt;/p&gt;</content><author><name>Sergio Martino</name></author><summary type="html">How to manage state in simple applications, using a reactive store in Vue.</summary></entry><entry><title type="html">Scraping news with Python</title><link href="https://blog.sergiomartino.com/2020/06/scraping-news-with-python/" rel="alternate" type="text/html" title="Scraping news with Python" /><published>2020-06-16T00:00:00-05:00</published><updated>2020-06-16T00:00:00-05:00</updated><id>https://blog.sergiomartino.com/2020/06/scraping-news-with-python</id><content type="html" xml:base="https://blog.sergiomartino.com/2020/06/scraping-news-with-python/">&lt;p&gt;In this article, I will explore how you can scrape a newspaper website and extract articles using &lt;strong&gt;python&lt;/strong&gt; and the command line. 
+In general, I would recommend python for everything that involves CLI for its excellent tooling.&lt;/p&gt;
+
+&lt;p&gt;Let’s have a look at how this can be achieved using &lt;strong&gt;click&lt;/strong&gt; (to install
+it you can &lt;strong&gt;pip install click&lt;/strong&gt;), a python library that streamlines your work on the CLI:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;click&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;importlib&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--scraper&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scraper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since every website is built differently in terms of html elements, we would want to separate our scrapers into different classes and provide a dedicated extraction logic.
+A simple &lt;a href=&quot;https://en.wikipedia.org/wiki/Strategy_pattern&quot;&gt;strategy pattern&lt;/a&gt; will allow us to pick the correct scraper according to the command line argument:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_scraper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scraper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scraper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Scraper&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# NewsPaperScraper class
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;import_module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;getattr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ModuleNotFoundError&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now that we have our scraper class and an available instance of it, we need a way to reach the news website and read its content. A simple &lt;em&gt;get&lt;/em&gt; request in python can be carried out using &lt;strong&gt;requests&lt;/strong&gt; (to install it you can &lt;strong&gt;pip install requests&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.newspaper.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# your news in html
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To extract articles from a piece of html we need an html tree traverser. Thankfully, there’s a nice library called &lt;a href=&quot;https://www.crummy.com/software/BeautifulSoup/bs4/doc/&quot;&gt;BeautifulSoup&lt;/a&gt; that does just that (among other things). Let’s install it with &lt;strong&gt;pip install beautifulsoup4&lt;/strong&gt;. Before using our scraped html with BeatifulSoup, we also need to make sure it’s encoded correctly:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_parser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;registered_scraper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;registered_scraper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BeautifulSoup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;html.parser&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, let’s implement our news scraper:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NewsPaperScraper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;https://www.newspaper.com&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;extract_articles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# simplified, you might need to lookup specific DOM elements
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract_article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.news-article&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;extract_article&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;article_block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;article_block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;wrapping-it-all-up&quot;&gt;Wrapping it all up&lt;/h3&gt;
+
+&lt;p&gt;You can have a look at a working example for &lt;a href=&quot;https://www.bbc.co.uk/news&quot;&gt;BBC News&lt;/a&gt; on my &lt;a href=&quot;https://github.com/sergiomartino/python-news-scraper&quot;&gt;github repo&lt;/a&gt;. Just clone the repo and install from &lt;strong&gt;requirements.txt&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; requirements.txt
+python scrape.py &lt;span class=&quot;nt&quot;&gt;--scraper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;BBCNews
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Sergio Martino</name></author><summary type="html">A quick tutorial that explains how to use Python&amp;#039;s BeautifulSoup library to scrape BBC News articles.</summary></entry><entry><title type="html">A state management journey</title><link href="https://blog.sergiomartino.com/2020/05/a-state-management-journey/" rel="alternate" type="text/html" title="A state management journey" /><published>2020-05-15T00:00:00-05:00</published><updated>2020-05-15T00:00:00-05:00</updated><id>https://blog.sergiomartino.com/2020/05/a-state-management-journey</id><content type="html" xml:base="https://blog.sergiomartino.com/2020/05/a-state-management-journey/">&lt;p&gt;State Management in javascript applications is a &lt;em&gt;simple&lt;/em&gt; concept: keeping the data model in sync with the user interface. In this article, I will explore the fluctation of complexity that happened during the last decade in the javascript world of state management.&lt;/p&gt;
+
+&lt;p&gt;Early web applications were not designed to hold much state on the frontend and most times it was just a matter of handling minimal interaction. In fairness, it might have not been even necessary as state could have been pushed down by the backend directly.&lt;/p&gt;
+
+&lt;p&gt;This approach however, as frontend applications evolved, increased the amount of bulk code resulting in maintanance hardship. The frontend software was changing: the amount of state had been gradually moving from the backend to the frontend.&lt;/p&gt;
+
+&lt;p&gt;In such context, working extensively with the relatively unstable browser API was quite expensive. At that time, &lt;strong&gt;jQuery&lt;/strong&gt; was the solution to all of this: it provided a &lt;em&gt;simple&lt;/em&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Facade_pattern&quot;&gt;facade&lt;/a&gt; to all crossbrowser complexities allowing developers to concentrate on state management.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#my-label&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;status-change&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;updateStatus&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#my-label&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;trigger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;status-change&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;NEW_STATUS&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The above is what state manegement can look like in jQuery. Neat pattern, however it did not scale well. What happens if the status is updated by some other piece of code in the application? What is the source of truth? How can we determine the status correctly?&lt;/p&gt;
+
+&lt;p&gt;Frameworks such as &lt;a href=&quot;https://backbonejs.org&quot;&gt;BackboneJS&lt;/a&gt; encapsulated the best practices from jQuery (it is one of its dependencies in fact) into Models and Views along with a &lt;a href=&quot;https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern&quot;&gt;Pub/Sub&lt;/a&gt; implementation. State management became modularised.&lt;/p&gt;
+
+&lt;p&gt;With &lt;a href=&quot;https://angularjs.org/&quot;&gt;AngularJS&lt;/a&gt; first and &lt;a href=&quot;https://www.reactjs.org&quot;&gt;React&lt;/a&gt; afterwards, these self contained interface blocks evolved into Components and state management became a different story altogehter.&lt;/p&gt;
+
+&lt;h3 id=&quot;managing-state-with-components&quot;&gt;Managing State with Components&lt;/h3&gt;
+
+&lt;p&gt;State management in a Component Architecture is structurely different and components are designed with &lt;a href=&quot;https://en.wikipedia.org/wiki/Inversion_of_control&quot;&gt;inversion of control&lt;/a&gt; in mind:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;MyComponent&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;My label&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onClick=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{onClickHandler}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can consider this component a blackbox: its state depends entirely on its properties contract and internal state.&lt;/p&gt;
+
+&lt;p&gt;Consider the code below:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;OrderPanel&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Order&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/OrderPanel&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;UserPanel&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Cash&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/UserPanel&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;How can we have state made available to both &lt;strong&gt;Order&lt;/strong&gt; and &lt;strong&gt;Cash&lt;/strong&gt; children? Yup, we would need to pass the information across, at each level:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;Order&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; ↓
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Cart&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; ↓
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;CartButtonBar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; ↓
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;CartCash&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;the-turning-point&quot;&gt;The turning point&lt;/h3&gt;
+
+&lt;p&gt;Trying to solve the cross-tree state management problem proved to be a turning point of frontend applications state management: handling state in apps suddenly became a discipline with a steep learning curve, a long list of boilerplate files and over-abstractions.&lt;/p&gt;
+
+&lt;p&gt;Facebook introduced the &lt;a href=&quot;https://facebook.github.io/flux&quot;&gt;Flux pattern&lt;/a&gt; for its frontend, celebrating the &lt;em&gt;unidirectional data flow&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/post-assets/flux.png&quot; alt=&quot;Flux pattern graph&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see from the above graph, it’s not immediately obvious how the state is managed. However, in a nutshell, the application state is representated by a &lt;strong&gt;store&lt;/strong&gt;, a global object interacted with through an actions api.&lt;/p&gt;
+
+&lt;p&gt;This approach has clear benefits such as a &lt;em&gt;single source of truth&lt;/em&gt; in the store as well as a clear &lt;em&gt;separation of concerns&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A few years later, &lt;a href=&quot;https://overreacted.io&quot;&gt;Dan Abramov&lt;/a&gt; presented &lt;a href=&quot;https://redux.js.org&quot;&gt;Redux&lt;/a&gt;, a library inspired by Flux to manage state in frontend applications. This library would influence frontend applications, especially React ones, for the years to come.&lt;/p&gt;
+
+&lt;p&gt;Redux is somewhat different to the original Flux implementation. I won’t go through it here, but it is important to pin down the fact that it introduced more overhead:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reducer (and function purity)&lt;/li&gt;
+  &lt;li&gt;Reducer composition (and function composition)&lt;/li&gt;
+  &lt;li&gt;Immutability&lt;/li&gt;
+  &lt;li&gt;Redux middlewares (and &lt;strong&gt;generators&lt;/strong&gt; if using &lt;em&gt;Redux-Saga&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When used with React, we could add these to the list:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;State to props mapping&lt;/li&gt;
+  &lt;li&gt;Component to store mapping&lt;/li&gt;
+  &lt;li&gt;Dispatch to props mapping&lt;/li&gt;
+  &lt;li&gt;Action creators&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Despite the steep learning curve, Redux became very popular as it proved to succeed in production for complex applications. On the other side of the coin, Redux had unwillingly been adopted as a state management standard thanks to its smooth React integration. Is this complexity required to maintain good control over the state of the application? Not always.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You might not need Redux. - &lt;a href=&quot;https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367&quot;&gt;Dan Abramov&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;a-fresh-take-on-state-management&quot;&gt;A fresh take on state management&lt;/h3&gt;
+
+&lt;p&gt;In recent years, React introduced the &lt;strong&gt;Context API&lt;/strong&gt; which suggested a new way to accessing state from deeply nested components. With the introduction of &lt;strong&gt;Hooks&lt;/strong&gt;, and the ability to use them anywhere in the application, state management returned to its bitesize format that it once was:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// OrderConfirm.jsx (a StateProvider must be available)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;OrderConfirm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cash&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useStateValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;You&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;have&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cash&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/p&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Button&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;confirm-order&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;Confirm&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Order&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Button&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// reducer/yourReducer.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reducer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;confirm-order&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{...};&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This example ignores &lt;em&gt;performance&lt;/em&gt; implications around rendering children components using &lt;strong&gt;Context&lt;/strong&gt;, however a new path to a simpler api seems to be available and solutions to improve this design are &lt;a href=&quot;https://recoiljs.org/&quot;&gt;on the way&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;A similar concept concept can be applied in &lt;a href=&quot;https://www.vuejs.org&quot;&gt;Vue.js&lt;/a&gt; using &lt;strong&gt;observable&lt;/strong&gt; and computed properties. I will talk more about this technique in the upcoming articles.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;As frontend software evolves so will state management techniques and this is by no means the end of experimentation. The complexity curve has gone down, up and down again and this is going to be a common pattern as new technologies and tools are introduced in the ecosystem.&lt;/p&gt;</content><author><name>Sergio Martino</name></author><summary type="html">Exploring the complexities in frontend state management in the last decade, from vanilla Javascript to Redux.</summary></entry></feed>

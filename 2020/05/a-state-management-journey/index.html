@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Sergio Martino"><link type="application/atom+xml" rel="alternate" href="https://blog.sergiomartino.com/feed.xml" title="Dailygrind" /><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>A state management journey | Dailygrind</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="A state management journey" />
+<meta name="author" content="Sergio Martino" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Exploring the complexities in frontend state management in the last decade, from vanilla Javascript to Redux." />
+<meta property="og:description" content="Exploring the complexities in frontend state management in the last decade, from vanilla Javascript to Redux." />
+<link rel="canonical" href="https://blog.sergiomartino.com/2020/05/a-state-management-journey/" />
+<meta property="og:url" content="https://blog.sergiomartino.com/2020/05/a-state-management-journey/" />
+<meta property="og:site_name" content="Dailygrind" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-15T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="A state management journey" />
+<script type="application/ld+json">
+{"url":"https://blog.sergiomartino.com/2020/05/a-state-management-journey/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.sergiomartino.com/2020/05/a-state-management-journey/"},"author":{"@type":"Person","name":"Sergio Martino"},"headline":"A state management journey","dateModified":"2020-05-15T00:00:00-05:00","datePublished":"2020-05-15T00:00:00-05:00","description":"Exploring the complexities in frontend state management in the last decade, from vanilla Javascript to Redux.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta property="og:image" content="https://blog.sergiomartino.com/assets/me.jpg" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+  <body>
+    <div class="blog">
+        <aside>
+            <div class="logo">
+                <a href="/" title="Yup, that's me"><img src="/assets/me.jpg"></a>
+            </div>
+            <div class="me">
+                <h1>Dailygrind</h1>
+                <p>Writing code with a pencil.</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/about-me">About me</a></li>
+                    <li><a href="/about-this-blog">About this blog</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="/feed.xml">Rss</a></li>
+                </ul>
+            </nav>
+            <footer>
+                © 2021<br>
+                Author: Sergio Martino<br>
+                Engine: <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll 4.1.1</a>
+            </footer>
+        </aside>
+        <main>
+            <section>
+    
+
+<article class="article">
+    <h1>A state management journey</h1>
+    <h2>May 2020 | <a href="/2020/05/a-state-management-journey/">Permalink</a></h2>
+    <figure class="hero">
+        <img src="/post-assets/illustrations/2020/a-state-management-journey.svg">
+        <figcaption>Illustration by <a href="https://www.instagram.com/barbara_rodeghiero" target="_blank" rel="noopener">Barbara</a></figcaption>
+    </figure>
+
+    <div class="article__content">
+        <p>State Management in javascript applications is a <em>simple</em> concept: keeping the data model in sync with the user interface. In this article, I will explore the fluctation of complexity that happened during the last decade in the javascript world of state management.</p>
+
+<p>Early web applications were not designed to hold much state on the frontend and most times it was just a matter of handling minimal interaction. In fairness, it might have not been even necessary as state could have been pushed down by the backend directly.</p>
+
+<p>This approach however, as frontend applications evolved, increased the amount of bulk code resulting in maintanance hardship. The frontend software was changing: the amount of state had been gradually moving from the backend to the frontend.</p>
+
+<p>In such context, working extensively with the relatively unstable browser API was quite expensive. At that time, <strong>jQuery</strong> was the solution to all of this: it provided a <em>simple</em> <a href="https://en.wikipedia.org/wiki/Facade_pattern">facade</a> to all crossbrowser complexities allowing developers to concentrate on state management.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#my-label</span><span class="dl">'</span><span class="p">).</span><span class="nx">$on</span><span class="p">(</span><span class="dl">'</span><span class="s1">status-change</span><span class="dl">'</span><span class="p">,</span> <span class="nx">updateStatus</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#my-label</span><span class="dl">'</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="dl">'</span><span class="s1">status-change</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">NEW_STATUS</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The above is what state manegement can look like in jQuery. Neat pattern, however it did not scale well. What happens if the status is updated by some other piece of code in the application? What is the source of truth? How can we determine the status correctly?</p>
+
+<p>Frameworks such as <a href="https://backbonejs.org">BackboneJS</a> encapsulated the best practices from jQuery (it is one of its dependencies in fact) into Models and Views along with a <a href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">Pub/Sub</a> implementation. State management became modularised.</p>
+
+<p>With <a href="https://angularjs.org/">AngularJS</a> first and <a href="https://www.reactjs.org">React</a> afterwards, these self contained interface blocks evolved into Components and state management became a different story altogehter.</p>
+
+<h3 id="managing-state-with-components">Managing State with Components</h3>
+
+<p>State management in a Component Architecture is structurely different and components are designed with <a href="https://en.wikipedia.org/wiki/Inversion_of_control">inversion of control</a> in mind:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;MyComponent</span> <span class="na">label=</span><span class="s">"My label"</span> <span class="na">onClick=</span><span class="s">{onClickHandler}</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>We can consider this component a blackbox: its state depends entirely on its properties contract and internal state.</p>
+
+<p>Consider the code below:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;OrderPanel&gt;</span>
+    <span class="nt">&lt;Order</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/OrderPanel&gt;</span>
+
+<span class="nt">&lt;UserPanel&gt;</span>
+    <span class="nt">&lt;Cash</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/UserPanel&gt;</span>
+</code></pre></div></div>
+
+<p>How can we have state made available to both <strong>Order</strong> and <strong>Cash</strong> children? Yup, we would need to pass the information across, at each level:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Order</span> <span class="nt">/&gt;</span> ↓
+    <span class="nt">&lt;Cart</span> <span class="nt">/&gt;</span> ↓
+        <span class="nt">&lt;CartButtonBar</span> <span class="nt">/&gt;</span> ↓
+            <span class="nt">&lt;CartCash</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h3 id="the-turning-point">The turning point</h3>
+
+<p>Trying to solve the cross-tree state management problem proved to be a turning point of frontend applications state management: handling state in apps suddenly became a discipline with a steep learning curve, a long list of boilerplate files and over-abstractions.</p>
+
+<p>Facebook introduced the <a href="https://facebook.github.io/flux">Flux pattern</a> for its frontend, celebrating the <em>unidirectional data flow</em>.</p>
+
+<p><img src="/post-assets/flux.png" alt="Flux pattern graph" /></p>
+
+<p>As you can see from the above graph, it’s not immediately obvious how the state is managed. However, in a nutshell, the application state is representated by a <strong>store</strong>, a global object interacted with through an actions api.</p>
+
+<p>This approach has clear benefits such as a <em>single source of truth</em> in the store as well as a clear <em>separation of concerns</em>.</p>
+
+<p>A few years later, <a href="https://overreacted.io">Dan Abramov</a> presented <a href="https://redux.js.org">Redux</a>, a library inspired by Flux to manage state in frontend applications. This library would influence frontend applications, especially React ones, for the years to come.</p>
+
+<p>Redux is somewhat different to the original Flux implementation. I won’t go through it here, but it is important to pin down the fact that it introduced more overhead:</p>
+
+<ul>
+  <li>Reducer (and function purity)</li>
+  <li>Reducer composition (and function composition)</li>
+  <li>Immutability</li>
+  <li>Redux middlewares (and <strong>generators</strong> if using <em>Redux-Saga</em>)</li>
+</ul>
+
+<p>When used with React, we could add these to the list:</p>
+
+<ul>
+  <li>State to props mapping</li>
+  <li>Component to store mapping</li>
+  <li>Dispatch to props mapping</li>
+  <li>Action creators</li>
+</ul>
+
+<p>Despite the steep learning curve, Redux became very popular as it proved to succeed in production for complex applications. On the other side of the coin, Redux had unwillingly been adopted as a state management standard thanks to its smooth React integration. Is this complexity required to maintain good control over the state of the application? Not always.</p>
+
+<blockquote>
+  <p>You might not need Redux. - <a href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367">Dan Abramov</a></p>
+</blockquote>
+
+<h3 id="a-fresh-take-on-state-management">A fresh take on state management</h3>
+
+<p>In recent years, React introduced the <strong>Context API</strong> which suggested a new way to accessing state from deeply nested components. With the introduction of <strong>Hooks</strong>, and the ability to use them anywhere in the application, state management returned to its bitesize format that it once was:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// OrderConfirm.jsx (a StateProvider must be available)</span>
+<span class="kd">const</span> <span class="nx">OrderConfirm</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">[{</span> <span class="nx">cash</span> <span class="p">},</span> <span class="nx">dispatch</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useStateValue</span><span class="p">();</span>  
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;&gt;</span>
+            <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">have</span> <span class="k">this</span> <span class="p">{</span> <span class="nx">cash</span> <span class="p">}</span> <span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">dispatch</span><span class="p">({</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">confirm-order</span><span class="dl">'</span> <span class="p">})</span> <span class="p">}</span><span class="o">&gt;</span>
+                <span class="nx">Confirm</span> <span class="nx">Order</span>
+            <span class="o">&lt;</span><span class="sr">/Button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// reducer/yourReducer.js</span>
+<span class="kd">const</span> <span class="nx">reducer</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="dl">'</span><span class="s1">confirm-order</span><span class="dl">'</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{...};</span>
+    <span class="nl">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>This example ignores <em>performance</em> implications around rendering children components using <strong>Context</strong>, however a new path to a simpler api seems to be available and solutions to improve this design are <a href="https://recoiljs.org/">on the way</a>.</p>
+
+<p>A similar concept concept can be applied in <a href="https://www.vuejs.org">Vue.js</a> using <strong>observable</strong> and computed properties. I will talk more about this technique in the upcoming articles.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>As frontend software evolves so will state management techniques and this is by no means the end of experimentation. The complexity curve has gone down, up and down again and this is going to be a common pattern as new technologies and tools are introduced in the ecosystem.</p>
+
+        <hr />
+    </div>
+</article>
+</section>
+        </main>
+    </div>
+  </body>
+</html>

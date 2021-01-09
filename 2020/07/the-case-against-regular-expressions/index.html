@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="Sergio Martino"><link type="application/atom+xml" rel="alternate" href="https://blog.sergiomartino.com/feed.xml" title="Dailygrind" /><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>The case against Regular Expressions | Dailygrind</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="The case against Regular Expressions" />
+<meta name="author" content="Sergio Martino" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Regular expressions are powerful tools but they come at a price. The article explores why sometimes alternatives should be preferred." />
+<meta property="og:description" content="Regular expressions are powerful tools but they come at a price. The article explores why sometimes alternatives should be preferred." />
+<link rel="canonical" href="https://blog.sergiomartino.com/2020/07/the-case-against-regular-expressions/" />
+<meta property="og:url" content="https://blog.sergiomartino.com/2020/07/the-case-against-regular-expressions/" />
+<meta property="og:site_name" content="Dailygrind" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-15T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="The case against Regular Expressions" />
+<script type="application/ld+json">
+{"url":"https://blog.sergiomartino.com/2020/07/the-case-against-regular-expressions/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.sergiomartino.com/2020/07/the-case-against-regular-expressions/"},"author":{"@type":"Person","name":"Sergio Martino"},"headline":"The case against Regular Expressions","dateModified":"2020-07-15T00:00:00-05:00","datePublished":"2020-07-15T00:00:00-05:00","description":"Regular expressions are powerful tools but they come at a price. The article explores why sometimes alternatives should be preferred.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta property="og:image" content="https://blog.sergiomartino.com/assets/me.jpg" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap" rel="stylesheet"> 
+</head>
+
+  <body>
+    <div class="blog">
+        <aside>
+            <div class="logo">
+                <a href="/" title="Yup, that's me"><img src="/assets/me.jpg"></a>
+            </div>
+            <div class="me">
+                <h1>Dailygrind</h1>
+                <p>Writing code with a pencil.</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/about-me">About me</a></li>
+                    <li><a href="/about-this-blog">About this blog</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="/feed.xml">Rss</a></li>
+                </ul>
+            </nav>
+            <footer>
+                © 2021<br>
+                Author: Sergio Martino<br>
+                Engine: <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll 4.1.1</a>
+            </footer>
+        </aside>
+        <main>
+            <section>
+    
+
+<article class="article">
+    <h1>The case against Regular Expressions</h1>
+    <h2>July 2020 | <a href="/2020/07/the-case-against-regular-expressions/">Permalink</a></h2>
+    <figure class="hero">
+        <img src="/post-assets/illustrations/2020/the-case-against-regular-expressions.svg">
+        <figcaption>Illustration by <a href="https://www.instagram.com/barbara_rodeghiero" target="_blank" rel="noopener">Barbara</a></figcaption>
+    </figure>
+
+    <div class="article__content">
+        <p>A regular expression is a sequence of symbols that defines a pattern. This pattern is then used to search for characters or combinations of characters within text.</p>
+
+<p>In its simplest form, regular expressions can provide a viable method for text matching and extraction, using a concise api (in the javascript world, it would be the <strong>RegExp</strong> api). Below is an example of how regular expressions can help on working with text:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// constructor form</span>
+<span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="dl">'</span><span class="s1">https?://(www</span><span class="se">\\</span><span class="s1">.)?youtube</span><span class="se">\\</span><span class="s1">.com/(watch|playlist).*</span><span class="dl">'</span><span class="p">);</span> 
+
+<span class="c1">// literal form</span>
+<span class="sr">/https</span><span class="se">?</span><span class="sr">:/</span><span class="o">/</span><span class="p">(</span><span class="nx">www</span><span class="err">\\</span><span class="p">.)?</span><span class="nx">youtube</span><span class="err">\\</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="p">(</span><span class="nx">watch</span><span class="o">|</span><span class="nx">playlist</span><span class="p">).</span><span class="o">*</span><span class="sr">/</span><span class="err">;
+</span></code></pre></div></div>
+
+<p>Looking at the above code, you can clearly identify the intent without looking much at symbols and flags. It is trying to match/extract Youtube videos or playlist urls.</p>
+
+<p>Let’s have a look at a different and apparently simple example: a library book feed. Book records might look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+The Hunger Games, Suzanne Collins - ISBN: 0439023483 - pages 374
+Gone with the Wind, Margaret Mitchell - ISBN: 0446675539  - pages 1037
+...
+</code></pre></div></div>
+
+<p>If I was requested to extract the ISBN number for each of the feed records, a regular expression would definitely be one of the solutions I could be looking at:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bookPattern</span> <span class="o">=</span> <span class="sr">/ISBN:</span><span class="se">\s(\d</span><span class="sr">+</span><span class="se">)</span><span class="sr">/gm</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>A developer looking at this code may realise that I am trying to match the ISBN number or be looking for text around the ISBN number. After decoding the pattern, he might be able to find that I was in fact trying to match:</p>
+
+<ul>
+  <li>an “ISBN” label</li>
+  <li>followed by a space</li>
+  <li>followed by some numbers</li>
+  <li>in all lines of text</li>
+</ul>
+
+<p>Indeed, that is the intent. The results would be acceptable, but not exactly what we wanted (due to how grouping works):</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">text</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">bookPattern</span><span class="p">);</span>
+<span class="c1">// ["ISBN: 0439023483", "ISBN: 0446675539"]</span>
+</code></pre></div></div>
+
+<p>In order to match the ISBN number only, we would not be searching for the “ISBN label, followed by a space, followed by a number” but rather the “ISBN number, preceeded by the ISBN label”. It does seems like a small tweak on our pattern: in practice, we are looking to introduce a <strong>positive lookbehind assertion</strong>.</p>
+
+<p>Our pattern would then look like this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bookPattern</span> <span class="o">=</span> <span class="sr">/</span><span class="se">(?&lt;</span><span class="sr">=ISBN:</span><span class="se">\s)(\d</span><span class="sr">+</span><span class="se">)</span><span class="sr">/gm</span><span class="p">;</span>
+<span class="c1">// ["0439023483", "0446675539"]</span>
+</code></pre></div></div>
+
+<p>And no, it is not small tweak to me.</p>
+
+<p>It is somewhat reasonable to expect a developer to decode the pattern however, there are a number of symbols that create noise and on more convoluted scenarios they could possibly divert the focus from the business problem itself.</p>
+
+<p>Let’s say we have a new business requirement:</p>
+
+<blockquote>
+  <p>We just want 13-digit ISBNs and only if the record specifies the number of pages. - <em>The Business</em></p>
+</blockquote>
+
+<p>It seems like a realistic request, let’s see how this translates into work:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bookPattern</span> <span class="o">=</span> <span class="sr">/</span><span class="se">(?&lt;</span><span class="sr">=ISBN:</span><span class="se">\s)(\d{13})(?=\s</span><span class="sr">-</span><span class="se">\s</span><span class="sr">pages</span><span class="se">)</span><span class="sr">/gm</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Frankly speaking, our pattern now looks more like a <em>merge conflict</em> rather than an high level piece of code.</p>
+
+<p>Unfortunately, the data that we happen to work with is rarely well structured and abusing regular expressions is also quite common. Here is a solution proposed in a <a href="https://stackoverflow.com/a/8234912">Stackoverflow thread</a> for somebody looking to validate a url:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&amp;=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&amp;=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&amp; %@.\w_]*)#?(?:[\w]*))?)/
+</code></pre></div></div>
+
+<p>Trying to understand the above is time consuming and even though the intent could be manifested using variables or test coverage, I would not want to find myself looking at an uncomprehensible, unmaintanable piece of code.</p>
+
+<h3 id="alternatives-to-using-regular-expressions">Alternatives to using Regular Expressions</h3>
+
+<p>Abstracting regular expressions is quite unpopular and there seem to be an unconditioned love for regular expressions in the developer world which I struggle to understand: to me, this is a problem worth abstracting as explained in this article.</p>
+
+<p>Fortunately, I’m not alone in thinking this way and libraries such as <a href="https://github.com/VerbalExpressions">Verbal Expressions</a> offer a great api to constructing regular expression patterns. I would watch out for the <a href="https://github.com/VerbalExpressions/JSVerbalExpressions/pull/198">the upcoming version 2.0</a>, a complete rewrite with an increased support for patterns.</p>
+
+<p>Sometimes breaking the problem into smaller parts, perhaps resorting to array/string manipulation (mind the performance!) can also be a viable, but often overlooked, alternative.</p>
+
+<h3 id="in-conclusion">In Conclusion</h3>
+
+<p>Regular Expressons are powerful tools and with power comes responsibility.</p>
+
+<p>I find most regular expressions patterns easy to construct, but not so easy to decode and I tend to use them only if the pattern is immediately readable. I am not surprised a native abstraction is not available (there is no javascript Standard Library, let alone a regex package) however the language and its developers would benefit from a higher level api.</p>
+
+        <hr />
+    </div>
+</article>
+</section>
+        </main>
+    </div>
+  </body>
+</html>
