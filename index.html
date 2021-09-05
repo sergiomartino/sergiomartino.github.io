@@ -115,7 +115,7 @@ where you fould focus more time then it is actually needed. After all, it’s ju
   <li>If it does, then it must implement an accumulator function that works with an object that may expose an <strong>amount</strong> property</li>
 </ul>
 
-<p>The flow above exposes <em>different points of failure</em>. In particular, the function will return <strong>0</strong> in cases where a property is missing or spelt wrong, complicating a debugging session further.</p>
+<p>The flow above exposes <em>different points of failure</em>. Specifically, the function will return <strong>0</strong> in cases where a property is missing or spelt wrong, complicating a debugging session further.</p>
 
 <p>Below is an example:</p>
 
@@ -132,7 +132,7 @@ where you fould focus more time then it is actually needed. After all, it’s ju
 <span class="c1">// 0</span>
 </code></pre></div></div>
 
-<p>The function <strong>calculateValue</strong> will fail gracefully thanks to optional chaining however, because of a typo on the product property <strong>amount</strong> at index <strong>2</strong>, the sum is <strong>0</strong>. The error is not reported and we may not realise the problem right away.</p>
+<p>The function <strong>calculatePortfolioValue</strong> will fail gracefully thanks to optional chaining however, because of a typo on the product property <strong>amount</strong> at index <strong>2</strong>, the sum is <strong>0</strong>. The error is not reported and we may not realise the problem straight away.</p>
 
 <h3 id="validating-the-inputs">Validating the inputs</h3>
 
