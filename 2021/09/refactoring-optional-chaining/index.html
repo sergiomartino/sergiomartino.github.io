@@ -188,6 +188,7 @@ where you fould focus more time then it is actually needed. After all, it’s ju
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span>
   <span class="nx">flow</span><span class="p">,</span>
+  <span class="nx">compose</span><span class="p">,</span>
   <span class="nx">map</span><span class="p">,</span>
   <span class="nx">concat</span><span class="p">,</span>
   <span class="nx">reject</span><span class="p">,</span>
@@ -202,8 +203,11 @@ where you fould focus more time then it is actually needed. After all, it’s ju
   <span class="p">[</span><span class="nx">map</span><span class="p">(</span><span class="nx">getProductValue</span><span class="p">,</span> <span class="nx">products</span><span class="p">),</span> <span class="nx">concat</span><span class="p">([],</span> <span class="nx">errors</span><span class="p">)];</span>
 
 <span class="kd">const</span> <span class="nx">calculateProductsValue</span> <span class="o">=</span> <span class="p">([</span><span class="nx">products</span><span class="p">,</span> <span class="nx">errors</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">[</span>
-  <span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="p">[</span><span class="nx">amount</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">products</span><span class="p">)</span>
-  <span class="nx">flatten</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">reject</span><span class="p">(</span><span class="nx">isEmpty</span><span class="p">,</span> <span class="nx">map</span><span class="p">(</span><span class="nx">curry</span><span class="p">(</span><span class="nx">nth</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="nx">products</span><span class="p">)),</span> <span class="nx">errors</span><span class="p">))</span>
+  <span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="p">[</span><span class="nx">amount</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">products</span><span class="p">),</span>
+  <span class="nx">concat</span><span class="p">(</span><span class="nx">errors</span><span class="p">,</span> <span class="nx">compose</span><span class="p">(</span>
+    <span class="nx">flatten</span><span class="p">,</span>
+    <span class="nx">reject</span><span class="p">(</span><span class="nx">isEmpty</span><span class="p">)</span> 
+  <span class="p">)(</span><span class="nx">map</span><span class="p">(</span><span class="nx">curry</span><span class="p">(</span><span class="nx">nth</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="nx">products</span><span class="p">)))</span>
 <span class="p">];</span>
 
 <span class="kd">const</span> <span class="nx">getPortfolioReport</span> <span class="o">=</span> <span class="nx">flow</span><span class="p">([</span>
@@ -217,12 +221,7 @@ where you fould focus more time then it is actually needed. After all, it’s ju
 <span class="c1">// errors = [TypeError] &lt;= the amount typo!</span>
 </code></pre></div></div>
 
-<p>One might wonder what this line actually does:</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">flatten</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">reject</span><span class="p">(</span><span class="nx">isEmpty</span><span class="p">,</span> <span class="nx">map</span><span class="p">(</span><span class="nx">curry</span><span class="p">(</span><span class="nx">nth</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="nx">products</span><span class="p">)),</span> <span class="nx">errors</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p>It collects the errors from the product values and combines them with previous errors in a flattened array. Using  <strong>Either</strong> monad constructs would have probably been a better option to manage the failures here: some functional libraries such as <a href="https://folktale.origamitower.com/api/v2.3.0/en/folktale.result.html">Falktale</a> offer this functionality out of the box.</p>
+<p>Errors from the product values are combined with previous errors in a flattened array. Using an  <strong>Either</strong> monad construct would have probably been a better option to manage the failures here: some functional libraries such as <a href="https://folktale.origamitower.com/api/v2.3.0/en/folktale.result.html">Falktale</a> offer this functionality out of the box.</p>
 
 <h3 id="in-conclusion">In Conclusion</h3>
 
