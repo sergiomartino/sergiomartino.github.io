@@ -194,6 +194,7 @@ where you fould focus more time then it is actually needed. After all, it’s ju
   <span class="nx">isEmpty</span><span class="p">,</span>
   <span class="nx">flatten</span><span class="p">,</span>
   <span class="nx">curry</span><span class="p">,</span>
+  <span class="nx">reduce</span><span class="p">,</span>
   <span class="nx">nth</span>
 <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">lodash/fp</span><span class="dl">"</span><span class="p">;</span>
 
@@ -201,7 +202,7 @@ where you fould focus more time then it is actually needed. After all, it’s ju
   <span class="p">[</span><span class="nx">map</span><span class="p">(</span><span class="nx">getProductValue</span><span class="p">,</span> <span class="nx">products</span><span class="p">),</span> <span class="nx">concat</span><span class="p">([],</span> <span class="nx">errors</span><span class="p">)];</span>
 
 <span class="kd">const</span> <span class="nx">calculateProductsValue</span> <span class="o">=</span> <span class="p">([</span><span class="nx">products</span><span class="p">,</span> <span class="nx">errors</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">[</span>
-  <span class="nx">products</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="p">[</span><span class="nx">amount</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+  <span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="p">[</span><span class="nx">amount</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="nx">acc</span> <span class="o">+</span> <span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
   <span class="nx">flatten</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="nx">reject</span><span class="p">(</span><span class="nx">isEmpty</span><span class="p">,</span> <span class="nx">map</span><span class="p">(</span><span class="nx">curry</span><span class="p">(</span><span class="nx">nth</span><span class="p">(</span><span class="mi">1</span><span class="p">)),</span> <span class="nx">products</span><span class="p">)),</span> <span class="nx">errors</span><span class="p">))</span>
 <span class="p">];</span>
 
