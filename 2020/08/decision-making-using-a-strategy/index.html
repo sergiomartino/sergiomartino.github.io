@@ -215,39 +215,15 @@
 
 <p>And compose behaviour:</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">contactCustomerViaPreferredMethod</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">,</span> 
-    <span class="nx">method</span><span class="p">:</span> <span class="nx">CustomerContactMethod</span>
-<span class="p">)</span> <span class="o">=&gt;</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">method</span><span class="p">(</span><span class="nx">customer</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">contactCustomerViaEmail</span> <span class="o">=</span> <span class="nx">contactCustomerViaPreferredMethod</span><span class="p">(</span>
-    <span class="nx">customer</span><span class="p">,</span> 
-    <span class="nx">emailCustomer</span>
-<span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">contactCustomerViaPhone</span> <span class="o">=</span> <span class="nx">contactCustomerViaPreferredMethod</span><span class="p">(</span>
-    <span class="nx">customer</span><span class="p">,</span> 
-    <span class="nx">phoneCustomer</span>
-<span class="p">);</span>
-
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">contactCustomerViaPreferredMethod</span> <span class="o">=</span> <span class="p">(</span><span class="nx">method</span><span class="p">:</span> <span class="nx">CustomerContactMethod</span><span class="p">)</span> <span class="o">=&gt;</span> 
+    <span class="p">(</span><span class="nx">customer</span><span class="p">:</span> <span class="nx">Customer</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">method</span><span class="p">(</span><span class="nx">customer</span><span class="p">);</span>
 
 <span class="c1">// ....</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">customerPrefersEmails</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">contactCustomerViaEmail</span><span class="p">();</span>
+    <span class="nx">contactCustomerViaPreferredMethod</span><span class="p">(</span><span class="nx">emailCustomer</span><span class="p">)(</span><span class="nx">customer</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">contactCustomerViaPhone</span><span class="p">();</span>
+    <span class="nx">contactCustomerViaPreferredMethod</span><span class="p">(</span><span class="nx">phoneCustomer</span><span class="p">)(</span><span class="nx">customer</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div></div>
-
-<p>On more complex decision flows, using a <strong>tuple</strong>:</p>
-
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">contact</span><span class="p">,</span> <span class="nx">sendMarketingMaterial</span><span class="p">]</span> <span class="o">=</span> <span class="nx">getCustomerInteractionMethods</span><span class="p">(</span>
-    <span class="nx">customer</span><span class="p">,</span> 
-    <span class="nx">getCustomerPreferredContactMethod</span><span class="p">(</span><span class="nx">customer</span><span class="p">)</span>
-<span class="p">);</span>
-
-<span class="nx">contact</span><span class="p">();</span>
-<span class="nx">sendMarketingMaterial</span><span class="p">();</span>
 </code></pre></div></div>
 
 <h3 id="in-conclusion">In Conclusion</h3>
