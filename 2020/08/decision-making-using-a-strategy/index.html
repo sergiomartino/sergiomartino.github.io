@@ -183,8 +183,7 @@
 <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Customer</span><span class="p">();</span>
 <span class="nx">customer</span><span class="p">.</span><span class="nx">setStrategy</span><span class="p">(</span>
     <span class="nx">customerPrefersEmails</span> <span class="p">?</span> 
-    <span class="k">new</span> <span class="nx">CustomerEmailContactStrategy</span><span class="p">()</span>
-    <span class="p">:</span>
+    <span class="k">new</span> <span class="nx">CustomerEmailContactStrategy</span><span class="p">()</span> <span class="p">:</span>
     <span class="k">new</span> <span class="nx">CustomerPhoneContactStrategy</span><span class="p">()</span>
 <span class="p">);</span>
 
